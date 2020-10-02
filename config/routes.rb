@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:index,:edit,:update] do
     get :followings, :followers
   end
+  get "books/search"
   resources :books do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+
 
   resources :relationships, only: [:create, :destroy]
   root 'homes#top'
