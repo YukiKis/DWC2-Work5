@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <span>Search</span>
+  <%= form_with url: searches_search_path, method: :get, local: true, class: "text-center form-group" do |f| %>
+    <%= f.text_field :search, class: "form-inline" %>
+    <%= f.select :ub, options_for_select( { User: 1, Book: 2 }, class: "form-control" )%>
+    <%= f.select :how, options_for_select( { "完全一致"=> 1, "前方一致"=> 2, "後方一致"=> 3, "部分一致"=> 4 }, class: "form-control" )%>
+    <%= f.submit "Search" %>
+  <% end %>
+<% end %>
+
+  <%# Original %>
+  <%# <span>Search</span>
+  <%= form_tag books_search_path, method: "get" do %>
+    <%# <%= text_field_tag :search, params[:search] %> 
+    <%# <%= select_tag :ub, options_for_select({ "User": 1, "Book": 2}) %> 
+    <%# <%= select_tag :how, options_for_select({ "完全一致"=> 1, "前方一致"=> 2, "後方一致"=> 3, "部分一致" => 4 }) %> 
+    <%# <%= submit_tag "Search", name: nil %>
+  <%# <% end %> 

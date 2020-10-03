@@ -18,11 +18,11 @@ class Book < ApplicationRecord
 	end
 
 	def self.searched_by_user_head_part(search)
-		Book.joins(:user).where("users.name LIKE ?", "%#{search}")
+		Book.joins(:user).where("users.name LIKE ?", "#{search}%")
 	end
 
 	def self.searched_by_user_tail_part(search)
-		Book.joins(:user).where("users.name LIKE ?", "#{search}%")
+		Book.joins(:user).where("users.name LIKE ?", "%#{search}")
 	end
 
 	def self.searched_by_book_whole(search)
@@ -34,10 +34,10 @@ class Book < ApplicationRecord
 	end
 
 	def self.searched_by_book_head_part(search)
-		Book.where("title LIKE ?", "%#{search}")
+		Book.where("title LIKE ?", "#{search}%")
 	end
 
 	def self.searched_by_book_tail_part(search)
-		Book.where("title LIKE ?", "#{search}%")
+		Book.where("title LIKE ?", "%#{search}")
 	end
 end

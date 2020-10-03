@@ -47,28 +47,6 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
   end
-  
-  def search
-    if params[:ub] == "1" && params[:how] == "1"
-      @books = Book.searched_by_user_whole(params[:search])
-    elsif params[:ub] == "1" && params[:how] == "2"
-      @books = Book.searched_by_user_head_part(params[:search])
-    elsif params[:ub] == "1" && params[:how] == "3"
-      @books = Book.searched_by_user_tail_part(params[:search])
-    elsif params[:ub] == "1" && params[:how] == "4"
-      @books = Book.searched_by_user_part(params[:search])
-    elsif params[:ub] == "2" && params[:how] == "1"
-      @books = Book.searched_by_book_whole(params[:search])
-    elsif params[:ub] == "2" && params[:how] == "2"
-      @books = Book.searched_by_book_head_part(params[:search])
-    elsif params[:ub] == "2" && params[:how] == "3"
-      @books = Book.searched_by_book_tail_part(params[:search])
-    elsif params[:ub] == "2" && params[:how] == "4"
-      @books = Book.searched_by_book_part(params[:search])
-    else
-      @books = Book.all
-    end 
-  end
 
   private
 
